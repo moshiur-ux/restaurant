@@ -17,13 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['register'=>false]); 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('Category', App\Http\Controllers\CategoryController::class);
+Route::resource('Category', App\Http\Controllers\CategoryController::class)->middleware('auth');
 
-Route::resource('Food', App\Http\Controllers\FoodController::class);
+Route::resource('Food', App\Http\Controllers\FoodController::class)->middleware('auth');
 
 
 

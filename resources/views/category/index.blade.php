@@ -12,7 +12,22 @@
            
             @endif 
             <div class="card">
-                <div class="card-header">All Category</div>
+                <div class="card-header">All Category
+
+
+                <span class="float-right p-5">
+
+<a href="{{route('Category.create')}}">
+
+<button type="submit" class="btn btn-outline-secondary">
+
+Add Category
+
+</button>
+
+</a>
+</span>
+                </div>
 
                 <div class="card-body">
 

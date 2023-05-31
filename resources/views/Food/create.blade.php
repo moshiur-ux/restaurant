@@ -4,10 +4,21 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form action="{{route('Food.store')}}" method="post">@csrf
+        @if(Session::has('message'))
+            <div class="alert alert-success" role="alert">
+            {{Session::get('message')}}
+
+             </div>
+           
+            @endif
+            <form action="{{route('Food.store')}}" method="post" enctype="multipart/form-data" >@csrf
 
             <div class="card">
-                <div class="card-header">Add New Food</div>
+                <div class="card-header">Add New Food
+
+
+                
+                </div>
 
                 <div class="card-body">
 
@@ -17,7 +28,7 @@
                     </label>
                     <input type="text" name="name" class="form-control @error('name') is-invalid @enderror">
                     @error('name')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        {{ $message }}
                     @enderror
 
 
@@ -31,7 +42,7 @@
 
                            </textarea>
                            @error('description')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        {{ $message }}
                     @enderror
 
 
@@ -41,10 +52,10 @@
                     <label for="price">
                      Price
                     </label>
-                    <input type="number" name="name" class="form-control @error('price') is-invalid @enderror">
+                    <input type="number" name="price" class="form-control @error('price') is-invalid @enderror">
 
                     @error('price')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        {{ $message }}
                     @enderror
 
 
@@ -76,7 +87,7 @@
 
                     </select>
                     @error('category')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                    {{ $message }}
                     @enderror
                 </div>
 
@@ -86,7 +97,7 @@
                     </label>
                     <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
                     @error('image')
-                        <div class="alert alert-danger">{{ $message }}</div>
+                        {{ $message }}
                     @enderror
 
 

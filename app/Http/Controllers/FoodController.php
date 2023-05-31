@@ -12,6 +12,11 @@ class FoodController extends Controller
     public function index(Request $request)
     {
 
+        $foods =\App\Models\Food::latest()->paginate(10);
+        return view('Food.index',compact('foods'));
+
+
+
        
 
 
@@ -48,6 +53,24 @@ class FoodController extends Controller
 
      ]);
 
+     $image =$request->file('image');
+     $name=time().'.'.$image->getClientOriginalExtension();
+     $destinationPath =public_path('/images');
+     $image->move($destinationPath,$name);
+
+     \App\Models\Food::create([
+        'name'=>$request->get('name'),
+        'description'=>$request->get('description'),
+        'price'=>$request->get('price'),
+        'category_id'=>$request->get('category'),
+        'image'=>$name
+
+     ]);
+     return redirect()->back()->with('message','Food Section Created');
+
+
+
+
        
         
 
@@ -69,7 +92,9 @@ class FoodController extends Controller
      */
     public function edit(Request $request,string $id)
     {
-        
+        $food=\App\Models\Food::find($id);
+        return view('Food.edit',compact('food'));
+
     }
 
     /**
@@ -77,7 +102,39 @@ class FoodController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request,[
+
+            'name'=>'required',
+            'description'=>'required',
+            'price'=>'required|integer',
+            'category'=>'required',
+            'image'=>'mimes:png,jpg,jpeg'
+    
+    
+         ]);
+           
+         $food =\App\Models\Food::find($id);
+         $name=$food->image;
+         if($request->hasFile('image'))
+         {
+            $image =$request->file('image');
+        $name=time().'.'.$image->getClientOriginalExtension();
+        $destinationPath =public_path('/images');
+        $image->move($destinationPath,$name);
+
+         }
+         $food->name =$request->get('name');
+         $food->description = $request->get('description');
+         $food->price= $request->get('price');
+         $food->category_id= $request->get('category');
+         $food->image=$name;
+         $food->save();
+
+         return redirect()->route('Food.index')->with('message','Food information updated');
+
+          
+
+
     }
 
     /**
@@ -85,6 +142,9 @@ class FoodController extends Controller
      */
     public function destroy(Request $request,string $id)
     {
-        //
+        $food = \App\Models\Food::find($id);
+        $food->delete();
+        return redirect()->route('Food.index')->with('message','Food information updated');
+        
     }
 }
