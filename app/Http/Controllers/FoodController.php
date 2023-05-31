@@ -25,7 +25,8 @@ class FoodController extends Controller
      */
     public function create(Request $request)
     {
-       
+        return view('Food.create');
+        
 
     }
 
@@ -34,6 +35,8 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
+
+       
         
 
 
