@@ -26,7 +26,7 @@ class FoodController extends Controller
     public function create(Request $request)
     {
         return view('Food.create');
-        
+
 
     }
 
@@ -35,6 +35,18 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
+ 
+
+     $this->validate($request,[
+
+        'name'=>'required',
+        'description'=>'required',
+        'price'=>'required|integer',
+        'category'=>'required',
+        'image'=>'required|mimes:png,jpg,jpeg'
+
+
+     ]);
 
        
         
