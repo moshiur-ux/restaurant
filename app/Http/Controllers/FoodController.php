@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Food;
 class FoodController extends Controller
@@ -146,5 +147,17 @@ class FoodController extends Controller
         $food->delete();
         return redirect()->route('Food.index')->with('message','Food information updated');
         
+    }
+
+    public function listFood(Request $request){
+
+         $categories= Category::with('Food')->get();
+
+        return view('Food.list',compact('categories'));
+
+        
+
+
+
     }
 }
