@@ -160,4 +160,17 @@ class FoodController extends Controller
 
 
     }
+
+    public function view(Request $request,string $id){
+
+
+        $food =\App\Models\Food::find($id);
+        return view('Food.detail',compact('food'));
+
+
+    }
+
+
+
+
 }

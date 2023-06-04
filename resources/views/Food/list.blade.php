@@ -14,7 +14,12 @@
                     <img src="{{asset('images')}}/{{$food->image}}" width="200" height="155">
 
                     <p class="text-aling-center"> {{$food->name}}<span>${{$food->price}}</span> </p>
-                       <p class="text-aling-center"><a href="">View</a></p>
+                       <p class="text-aling-center"><a href="{{route('Food.view',[$food->id])}}">
+
+                       <button clas="btn btn-outline-danger">View</button>
+
+
+                       </a></p>
 
                     </div>
 
