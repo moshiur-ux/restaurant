@@ -12,7 +12,7 @@
            
             @endif 
             <div class="card">
-                <div class="card-header">All Food
+                <div class="card-header">All Items
                   
                 <span class="float-right p-5">
 
@@ -20,7 +20,7 @@
 
                 <button type="submit" class="btn btn-outline-secondary">
 
-                Add Food
+                Add Items
             
 </button>
 
@@ -51,8 +51,8 @@
       <td> <img src=" {{asset('images')}}/{{$food->image}}" width="100"></td>
       <td>{{$food->name}}</td>
       <td>{{$food->description}}</td>
-      <td>${{$food->price}}</td>
-      <td>{{$food->category->name}}</td>
+      <td>{{$food->price}}</td>
+      <td>{{$food->category?->name}}</td>
       <td>
         <a href="{{route('Food.edit',[$food->id])}}">
 
@@ -61,19 +61,44 @@
 
       </td>
       <td>
-      <a href="">
-
-      <form action="{{route('Food.destroy',[$food->id])}}" method="post">@csrf
-      {{method_field('DELETE')}}
-
-      <button class="btn btn-outline-danger">Delete</button>
 
 
+      <form id="delete-form-{{ $food->id }}" method="POST"  action="{{route('Food.destroy',[$food->id])}}">@csrf
+                    
+                    {{method_field('DELETE')}}
+  
+                    </form>
 
-      </form>
+      <a  href="#" onclick="if (confirm('Do you want to delete?'))
+                
+                {
 
-       
-       </a>
+                event.preventDefault(); document.getElementById('delete-form-{{ $food->id }}').submit();
+
+                }
+                
+                else
+                  {
+                    event.preventDefault();
+
+                  }
+                
+                
+                ">
+
+              
+                
+
+          <button class="btn btn-outline-danger"  value="delete" type="submit">Delete</button>
+
+          
+    
+                    </a>
+
+
+
+      
+
 
 
       </td>

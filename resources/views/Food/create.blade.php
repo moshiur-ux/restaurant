@@ -14,7 +14,7 @@
             <form action="{{route('Food.store')}}" method="post" enctype="multipart/form-data" >@csrf
 
             <div class="card">
-                <div class="card-header">Add New Food
+                <div class="card-header">Add New Items
 
 
                 
@@ -50,7 +50,7 @@
 
                 <div class="form-group">
                     <label for="price">
-                     Price
+                     How many ?
                     </label>
                     <input type="number" name="price" class="form-control @error('price') is-invalid @enderror">
 

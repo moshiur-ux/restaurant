@@ -15,7 +15,7 @@
              {{method_field('PUT')}}
 
             <div class="card">
-                <div class="card-header">Update  Food Category</div>
+                <div class="card-header">Update  Items Category</div>
 
                 <div class="card-body">
                    

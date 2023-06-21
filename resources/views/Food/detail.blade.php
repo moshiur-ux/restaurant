@@ -7,7 +7,7 @@
     <div class="col-md-4">
 
     <div class="card">
-                <div class="card-header">Product</div>
+                <div class="card-header">Items</div>
 
                 <img src="{{asset('images')}}/{{$food->image}}" class="img-responsibe">
 
@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <p><h2>{{$food->name}}</h2></p>
                     <p class="lead">{{$food->description}}</p>
-                    <p><h4>${{$food->price}}</h4></p>
+                    <p><h4>{{$food->price}}</h4></p>
                    
                 </div>
             </div>

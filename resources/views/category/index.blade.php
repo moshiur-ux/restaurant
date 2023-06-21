@@ -55,19 +55,40 @@ Add Category
 
       </td>
       <td>
-      <a href="">
+      
 
-      <form action="{{route('Category.destroy',[$category->id])}}" method="post">@csrf
-      {{method_field('DELETE')}}
+       <form id="delete-form-{{ $category->id }}" method="POST"  action="{{route('Category.destroy',[$category->id])}}">@csrf
+                    
+                    {{method_field('DELETE')}}
+  
+                    </form>
 
-      <button class="btn btn-outline-danger">Delete</button>
+      <a  href="#" onclick="if (confirm('Do you want to delete?'))
+                
+                {
 
+                event.preventDefault(); document.getElementById('delete-form-{{ $category->id }}').submit();
 
+                }
+                
+                else
+                  {
+                    event.preventDefault();
 
-      </form>
+                  }
+                
+                
+                ">
 
-       
-       </a>
+              
+                
+
+          <button class="btn btn-outline-danger"  value="delete" type="submit">Delete</button>
+
+          
+    
+                    </a>
+
 
 
       </td>

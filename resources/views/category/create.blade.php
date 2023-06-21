@@ -14,7 +14,7 @@
             <form action="{{route('Category.store')}}" method="post">@csrf
   
             <div class="card">
-                <div class="card-header">Manage Food Category</div>
+                <div class="card-header">Manage Items Category</div>
 
                 <div class="card-body">
                    

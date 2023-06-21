@@ -43,7 +43,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('Food.index') }}">{{ __('FOOD') }}</a>
+                                    <a class="nav-link" href="{{ route('Food.index') }}">{{ __('ITEM_SECTION') }}</a>
                                 </li>
 
                         @endif

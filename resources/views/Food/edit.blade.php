@@ -14,7 +14,7 @@
             <form action="{{route('Food.update',[$food->id])}}" method="post" enctype="multipart/form-data" >@csrf
            {{method_field('PUT')}}
             <div class="card">
-                <div class="card-header">Update Food</div>
+                <div class="card-header">Update Iteams</div>
 
                 <div class="card-body">
 
